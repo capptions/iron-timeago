@@ -1,4 +1,4 @@
-sc-timeago
+# < sc-timeago >
 ============
 
 Polymer 1.0 element that shows a date/time as 'some time ago' using moment.js
