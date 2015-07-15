@@ -59,17 +59,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			
 			ready: function () {
 				var self = this;
+				ready: function () {
+				var self = this;
 				var timeUpdate = function() {
 					self.timeago = moment(self.datetime).fromNow();
 					setTimeout(function() {
-							refresh();
-						},this.timeout);
+						timeUpdate();
+					},this.timeout);
 				};	
-				var refresh = function() {
-						setTimeout(function() {
-							timeUpdate();
-						},this.timeout);
-				};
 				timeUpdate();
 			}
 		});
