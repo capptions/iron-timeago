@@ -9,9 +9,9 @@ The element has the following public properties:
 
 | Attribute | Purpose | Default |
 |----------------|-------------|-------------|
-| `timeago` | This is where moment stores the human readable time | `null` |
-| `datetime` | This is the user input for the from date (YYYY-MM-DD) | `null` |
-| `timeout` | This is how often they want the time to update (it's 1 minute as default) | 60000 |
+| timeago | This is where moment stores the human readable time | `nul` |
+| datetime | This is the user input for the from date (YYYY-MM-DD) | `nul` |
+| timeout | This is how often they want the time to update (it's 1 minute as default) | 60000 |
 
 Usage:
 
