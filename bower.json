@@ -1,0 +1,28 @@
+{
+  "name": "sc-geolocator",
+  "version": "1.0.0",
+  "description": "Polymer element that offers geolocation",
+  "authors": [
+    "Safety Changer"
+  ],
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer",
+    "geolocation",
+    "geolocator",
+    "location",
+    "gps"
+  ],
+  "main": "sc-geolocator.html",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/safetychanger/sc-geolocator"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/safetychanger/sc-geolocator",
+  "dependencies": {
+    "geolocator": "latest"
+  }
+}
