@@ -7,65 +7,48 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS
 -->
-<script src="../moment/min/moment.min.js"></script>
 
-<dom-module id="sc-timeago">
-  <template>[[timeago]]</template>
-</dom-module>
+<link rel="import" href="../polymer/polymer.html" />
+<script type="text/javascript" src="moment.min.js"></script>
+
+<dom-module id="sc-timeago"><template>{{timeago}}</template></dom-module>
 
 <script>
-(function () {
-
-  var Timeago = {
-    getTimeAgoText: function (datetime) {
-      return window.moment(datetime).fromNow();
-    },
-    refresh: function (element, datetime) {
-      element.innerHTML = this.getTimeAgoText(datetime);
-    }
-  };
-
-  var interval;
-
-  window.Polymer({
-    is: 'sc-timeago',
-
-    properties: {
-      timeago: {
-        type: String,
-        value: '',
-        notify: true
-      },
-      datetime: {
-        type: String,
-        value: '0000-00-00T00:00:00.000Z'
-      },
-      timeout: {
-        type: Number,
-        value: 60000
-      }
-    },
-
-    ready: function () {
-      var self = this;
-      this.timeago = Timeago.getTimeAgoText(this.datetime);
-
-      if (this.timeout > 0) {
-        if (typeof interval !== 'undefined') {
-          window.clearInterval(interval);
-        }
-
-        interval = window.setInterval(function () {
-          self.ready();
-        }, this.timeout);
-      }
-    },
-
-    attributeChanged: function () {
-      this.ready();
-    }
-
-  });
-
-})();
+	( function () {
+		Polymer({
+			is: 'sc-timeago',
+			properties: {
+			  /**
+				* This is where moment stores the human readable time
+				* Set by JS
+				*
+				* @attribute timeago
+				* @type string
+				* @default ''
+				*/
+				timeago: {
+					type: String,
+					value: '',
+					notify: true
+				},
+				/**
+				* This is the user input for the from date (YYYY-MM-DD)
+				* Set by user
+				*
+				* @attribute datetime
+				* @type string
+				* @default ''
+				*/
+				datetime: {
+					type: String,
+					value: ''
+				}
+			},
+			
+			/* Sets timeago using moment */
+			ready: function () {
+				this.timeago = moment(this.datetime).fromNow();
+			}
+		});
+	})();
 </script>
