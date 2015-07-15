@@ -1,7 +1,7 @@
 {
-  "name": "sc-geolocator",
+  "name": "sc-timeago",
   "version": "1.0.0",
-  "description": "Polymer element that offers geolocation",
+  "description": "Polymer 1.0 element that shows a date/time as 'some time ago' using moment.js",
   "authors": [
     "Safety Changer"
   ],
@@ -9,20 +9,21 @@
     "web-components",
     "web-component",
     "polymer",
-    "geolocation",
-    "geolocator",
-    "location",
-    "gps"
+    "timeago",
+    "time",
+    "date",
+    "moment",
+    "momentjs"
   ],
-  "main": "sc-geolocator.html",
+  "main": "sc-timeago.html",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git://github.com/safetychanger/sc-geolocator"
+    "url": "git://github.com/safetychanger/sc-timeago"
   },
   "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/safetychanger/sc-geolocator",
+  "homepage": "https://github.com/safetychanger/sc-timeago",
   "dependencies": {
-    "geolocator": "latest"
+    "moment": "latest"
   }
 }
