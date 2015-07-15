@@ -1,4 +1,3 @@
-<!doctype html>
 <!--
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -17,10 +16,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="../webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="sc-timeago.html">
 
+  <style>
+	sc-timeago {
+		color: red;
+	}
+  </style>
 </head>
 <body>
 
-  <sc-timeago></sc-timeago>
-
-</body>
+ January first was about <sc-timeago datetime="2015-01-01T06:00:00.000Z"></sc-timeago>, which I just had calculated for me with the sc-timeago tag! 
+ <br>All I needed to do was have the datetime="2015-01-01T06:00:00.000Z" attribute set.
+ <br> That's right YYYY-MM-DD T HH:MM:SS.000
 </html>
