@@ -42,12 +42,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				datetime: {
 					type: String,
 					value: ''
+				},
+				/**
+				* This is how often they want the time to update (it's 1 minute as default)
+				* Set by user (not crucial)
+				*
+				* @attribute timeout
+				* @type number
+				* @default '60000' (60 seconds)
+				*/
+				timeout: {
+					type: Number,
+					value: 60000
 				}
 			},
 			
-			/* Sets timeago using moment */
 			ready: function () {
-				this.timeago = moment(this.datetime).fromNow();
+				var self = this;
+				var timeUpdate = function() {
+					self.timeago = moment(self.datetime).fromNow();
+					setTimeout(function() {
+							refresh();
+						},this.timeout);
+				};	
+				var refresh = function() {
+						setTimeout(function() {
+							timeUpdate();
+						},this.timeout);
+				};
+				timeUpdate();
 			}
 		});
 	})();
