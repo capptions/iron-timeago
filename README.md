@@ -7,8 +7,11 @@ Polymer 1.0 element that shows a date/time as 'some time ago' using moment.js
 
 The element has the following public properties:
 
-- `timeago`: the output string, this is the only property rendered in the element template
-- `datetime`: the date string for which the output should be rendered
+| Attribute | Purpose | Default |
+|----------------|-------------|-------------|
+| `timeago` | This is where moment stores the human readable time | `null` |
+| `datetime` | This is the user input for the from date (YYYY-MM-DD) | `null` |
+| `timeout` | This is how often they want the time to update (it's 1 minute as default) | 60000 |
 
 Usage:
 
