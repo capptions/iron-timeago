@@ -16,17 +16,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
 (function () {
 
-  var Timeago = {
-    getTimeAgoText: function (datetime) {
-      return window.moment(datetime).fromNow();
-    },
-    refresh: function (element, datetime) {
-      element.innerHTML = this.getTimeAgoText(datetime);
-    }
-  };
-
-  var interval;
-
   window.Polymer({
     is: 'sc-timeago',
 
@@ -47,15 +36,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     ready: function () {
-      this.timeago = Timeago.getTimeAgoText(this.datetime);
+      this.set('timeago', window.moment(datetime).fromNow());
 
-      if (this.timeout > 0) {
-        if (typeof interval !== 'undefined') {
-          window.clearInterval(interval);
-        }
-
-        interval = window.setInterval(this.ready.bind(this), this.timeout);
+      if (this.timeout <= 0) {
+        return;
       }
+
+      window.clearInterval(this.interval);
+      this.interval = window.setInterval(this.ready.bind(this), this.timeout);
     },
 
     attributeChanged: function () {
