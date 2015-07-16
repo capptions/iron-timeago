@@ -7,50 +7,42 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS
 -->
+<link rel="import" href="../polymer/polymer.html" />
 <script src="../moment/min/moment.min.js"></script>
 
-<dom-module id="sc-timeago">
-  <template>[[timeago]]</template>
-</dom-module>
+<dom-module id="sc-timeago"><template>{{timeago}}</template></dom-module>
 
 <script>
-(function () {
+  (function () {
+    Polymer({
+      is: 'sc-timeago',
 
-  window.Polymer({
-    is: 'sc-timeago',
-
-    properties: {
-      timeago: {
-        type: String,
-        value: '',
-        notify: true
+      properties: {
+        timeago: {
+          type: String,
+          value: '',
+          notify: true
+        },
+        datetime: {
+          type: String,
+          value: '0000-00-00T00:00:00.000Z'
+        },
+        timeout: {
+          type: Number,
+          value: 60000
+        }
       },
-      datetime: {
-        type: String,
-        value: '0000-00-00T00:00:00.000Z'
-      },
-      timeout: {
-        type: Number,
-        value: 60000
-      }
-    },
 
-    ready: function () {
-      this.set('timeago', window.moment(datetime).fromNow());
-
-      if (this.timeout <= 0) {
-        return;
-      }
-
-      window.clearInterval(this.interval);
-      this.interval = window.setInterval(this.ready.bind(this), this.timeout);
-    },
-
-    attributeChanged: function () {
-      this.ready();
-    }
-
-  });
-
-})();
+	ready: function () {
+		var self = this;
+		var timeUpdate = function() {
+			self.timeago = moment(self.datetime).fromNow();
+			setTimeout(function() {
+				timeUpdate();
+			},this.timeout);
+	`	};	
+		timeUpdate();
+	}
+    });
+  })();
 </script>
