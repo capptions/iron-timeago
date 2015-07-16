@@ -16,6 +16,7 @@
     "momentjs"
   ],
   "main": "sc-timeago.html",
+  "ignore": {},
   "private": false,
   "repository": {
     "type": "git",
