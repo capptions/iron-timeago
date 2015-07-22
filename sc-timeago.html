@@ -36,6 +36,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     },
 
+    observers: [
+      'ready(datetime)',
+      'ready(timeout)'
+    ],
+
     ready: function () {
       this.set('timeago', window.moment(this.datetime).fromNow());
 
@@ -45,10 +50,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       window.clearTimeout(this.interval);
       this.interval = window.setTimeout(this.ready.bind(this), this.timeout);
-    },
-
-    attributeChanged: function () {
-      this.ready();
     }
 
   });
