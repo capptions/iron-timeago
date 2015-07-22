@@ -43,8 +43,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return;
       }
 
-      window.clearInterval(this.interval);
-      this.interval = window.setInterval(this.ready.bind(this), this.timeout);
+      window.clearTimeout(this.interval);
+      this.interval = window.setTimeout(this.ready.bind(this), this.timeout);
     },
 
     attributeChanged: function () {
