@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script src="../moment/min/moment.min.js"></script>
 
 <dom-module id="sc-timeago">
-  <template>[[timeago]]</template>
+  <template><time datetime="[[datetime]]">[[timeago]]</time></template>
 </dom-module>
 
 <script>
@@ -33,6 +33,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       timeout: {
         type: Number,
         value: 60000
+      },
+      isPast: {
+        type: Boolean,
+        value: false
       }
     },
 
@@ -42,7 +46,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     ],
 
     ready: function () {
-      this.set('timeago', window.moment(this.datetime).fromNow());
+      var moment = window.moment(this.datetime);
+
+      if (this.isPast) {
+        moment = moment.max();
+      }
+
+      this.set('timeago', moment.fromNow());
 
       if (this.timeout <= 0) {
         return;
