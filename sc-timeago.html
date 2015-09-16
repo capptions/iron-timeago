@@ -46,13 +46,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     ],
 
     ready: function () {
-      var moment = window.moment(this.datetime);
+      var m = window.moment(this.datetime);
 
       if (this.isPast) {
-        moment = moment.max();
+        m = window.moment.min(m, window.moment());
       }
 
-      this.set('timeago', moment.fromNow());
+      this.set('timeago', m.fromNow());
 
       if (this.timeout <= 0) {
         return;
