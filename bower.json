@@ -25,7 +25,7 @@
   "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/safetychanger/sc-timeago",
   "dependencies": {
-    "polymer": "~1.0.6",
+    "polymer": "^1.0.6",
     "moment": "latest"
   }
 }
