@@ -1,0 +1,88 @@
+<script src="../date-fns/dist/date_fns.min.js"></script>
+
+<link rel="import" href="../polymer/polymer.html" />
+
+<!--
+`iron-timeago`
+Polymer 1.0 element that shows a date/time as 'some time ago' using https://date-fns.org
+
+@demo demo/index.html
+-->
+
+<dom-module id="iron-timeago">
+  <template>
+    <style>
+    </style>
+
+    <time datetime="[[datetime]]">[[timeago]]</time>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'iron-timeago',
+
+      properties: {
+        /**
+         * Output value: the date converted into a human friendly string, e.g. "10 minutes ago"
+         */
+        timeago: {
+          type: String,
+          value: '',
+          notify: true
+        },
+        /**
+         * Input value, ISO date string of a date that is to be displayed as a human friendly text
+         */
+        datetime: {
+          type: String,
+          value: '0000-00-00T00:00:00.000Z'
+        },
+        /**
+         * In milliseconds, the time between updating the string, defaults to a minute
+         */
+        timeout: {
+          type: Number,
+          value: 60000
+        },
+        /**
+         * Options as documented here: https://date-fns.org/docs/distanceInWords
+         */
+        options: {
+          type: Object,
+          value: function () {
+            return {
+              includeSeconds: true,
+              addSuffix: true
+            }
+          }
+        },
+      },
+
+      observers: [
+        'ready(datetime)',
+        'ready(timeout)'
+      ],
+
+      ready: function () {
+        if (!window.dateFns) {
+          return;
+        }
+
+        var dateToCompare = new Date();
+        var date = new Date(this.datetime);
+        var timeago = window.dateFns.distanceInWords(dateToCompare, date, this.options);
+
+        console.log(dateToCompare, date, timeago);
+
+        this.set('timeago', timeago);
+
+        if (this.timeout <= 0) {
+          return;
+        }
+
+        window.clearTimeout(this.interval);
+        this.interval = window.setTimeout(this.ready.bind(this), this.timeout);
+      }
+    });
+  </script>
+</dom-module>

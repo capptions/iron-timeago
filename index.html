@@ -1,32 +1,16 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE
-The complete set of authors may be found at http://polymer.github.io/AUTHORS
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS
--->
+<!doctype html>
 <html>
-<head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iron-timeago</title>
 
-  <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-  <link rel="import" href="sc-timeago.html">
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
 
-  <style>
-    sc-timeago {
-      color: red;
-    }
-  </style>
-</head>
-<body>
-
-January 1st 2015 was about <sc-timeago datetime="2015-01-01T00:00:00.000Z"></sc-timeago>, which I just had calculated for me with the sc-timeago tag! 
-<br>I gave it the attribute datetime="2015-01-01T00:00:00.000Z"
-<br>That's right YYYY-MM-DD T HH:MM:SS.000 Z
-
-</body>
+    <link rel="import" href="../iron-component-page/iron-component-page.html">
+  </head>
+  <body>
+    <iron-component-page src="iron-timeago.html"></iron-component-page>
+  </body>
 </html>
