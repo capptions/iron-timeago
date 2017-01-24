@@ -1,0 +1,34 @@
+{
+  "name": "iron-timeago",
+  "description": "Polymer 1.0 element that shows a date/time as 'some time ago' using https://date-fns.org",
+  "main": "iron-timeago.html",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "web",
+    "component",
+    "components",
+    "custom",
+    "element",
+    "polymer",
+    "iron",
+    "timeago",
+    "time",
+    "date",
+    "moment",
+    "momentjs",
+    "date-fns",
+    "fns"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "date-fns": "date-fns#^1.27.1"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}
