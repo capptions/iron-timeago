@@ -49,12 +49,7 @@ Polymer 1.0 element that shows a date/time as 'some time ago' using https://date
          */
         options: {
           type: Object,
-          value: function () {
-            return {
-              includeSeconds: true,
-              addSuffix: true
-            }
-          }
+          value: {}
         },
       },
 
@@ -68,12 +63,9 @@ Polymer 1.0 element that shows a date/time as 'some time ago' using https://date
           return;
         }
 
-        var dateToCompare = new Date();
         var date = new Date(this.datetime);
-        var timeago = window.dateFns.distanceInWords(dateToCompare, date, this.options);
-
-        console.log(dateToCompare, date, timeago);
-
+        var options = Object.assign({}, this._defaultOptions, this.options);
+        var timeago = window.dateFns.distanceInWordsToNow(date, options);
         this.set('timeago', timeago);
 
         if (this.timeout <= 0) {
@@ -82,6 +74,11 @@ Polymer 1.0 element that shows a date/time as 'some time ago' using https://date
 
         window.clearTimeout(this.interval);
         this.interval = window.setTimeout(this.ready.bind(this), this.timeout);
+      },
+
+      _defaultOptions: {
+        includeSeconds: true,
+        addSuffix: true
       }
     });
   </script>
